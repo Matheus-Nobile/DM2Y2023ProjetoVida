@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DM2Y2023ProjetoVida</string>
+    <string-array name="atividades">
+        <item>Corrida</item>
+        <item>Caminhada</item>
+        <item>Pedalada</item>
+    </string-array>
+</resources>
