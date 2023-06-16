@@ -34,6 +34,7 @@ class NovaAtividade : AppCompatActivity(), SensorEventListener, LocationListener
     lateinit var txtDescricao: TextView
     lateinit var spinner: Spinner
     lateinit var edtNome: EditText
+    lateinit var txtStatus: TextView
 
     var mSensorManager: SensorManager? = null
     var mAccelerometer: Sensor? = null
@@ -72,6 +73,7 @@ class NovaAtividade : AppCompatActivity(), SensorEventListener, LocationListener
         spinner = findViewById(R.id.spnAtividade)
         txtDescricao = findViewById(R.id.txtDescricao)
         edtNome = findViewById(R.id.edtNome)
+        txtStatus = findViewById(R.id.txtStatus)
 
         // ACELEROMETRO
         mSensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
@@ -85,14 +87,17 @@ class NovaAtividade : AppCompatActivity(), SensorEventListener, LocationListener
 
         findViewById<Button>(R.id.btnIniciar).setOnClickListener {
             startRecordActivity()
+            txtStatus.text = "Iniciado"
         }
 
         findViewById<Button>(R.id.btnPausar).setOnClickListener{
             disableLocationUpdates()
+            txtStatus.text = "Pausado"
         }
 
         findViewById<Button>(R.id.btnFinalizar).setOnClickListener{
             stopActivity()
+            txtStatus.text = "Finalizado"
         }
 
         val opcoes = listOf("Corrida", "Caminhada", "Pedalada")
@@ -270,4 +275,5 @@ class NovaAtividade : AppCompatActivity(), SensorEventListener, LocationListener
         val date = Date(currentTime)
         return formatter.format(date)
     }
+
 }
